@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golosa Digital Interactiva - Grado 2do</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- CONTEO REGRESIVO -->
+  <div id="countdown-overlay" class="overlay hidden">
+    <div id="countdown-number" class="pop-animation">3</div>
+  </div>
+
+  <!-- PANTALLA DE VICTORIA -->
+  <div id="victory-overlay" class="overlay hidden">
+    <div class="victory-card">
+      <h1>🎉 ¡FELICIDADES! 🎉</h1>
+      <p>¡Completaste toda la pista de la Golosa!</p>
+      <button onclick="reiniciarJuego()" class="btn-primary">Jugar de Nuevo 🔄</button>
+    </div>
+  </div>
+
+  <!-- ENCABEZADO -->
+  <header class="game-header">
+    <h1>✏️ GOLOSA DIGITAL INTERACTIVA</h1>
+    <div class="controls-bar">
+      
+      <!-- CONTENEDOR DEL ANIMAL A LA IZQUIERDA -->
+      <div class="animal-card">
+        <img id="animal-emblem" src="" alt="Animal del Nivel">
+      </div>
+
+      <!-- SELECTOR DE NIVEL -->
+      <div class="level-selector-box">
+        <label for="select-level">Nivel: </label>
+        <select id="select-level" onchange="cambiarNivel()">
+          <option value="1">🦥 Nivel 1: Oso Perezoso (Básico)</option>
+          <option value="2">🐆 Nivel 2: Jaguar (Avanzado - Aleatorio)</option>
+        </select>
+      </div>
+
+      <div class="timer-box">
+        ⏱️ Tiempo Total: <span id="timer-display">00:00</span> | ⏳ Movimiento: <span id="move-timer">15</span>s
+      </div>
+
+    </div>
+  </header>
+
+  <!-- LAYOUT PRINCIPAL -->
+  <main class="main-layout">
+    
+    <!-- SECCIÓN IZQUIERDA: GOLOSA LIMPIA -->
+    <section class="board-section">
+      <div class="plane-grid">
+        <div class="row single"><div class="tile disabled" id="tile-10">10</div></div>
+        <div class="row double">
+          <div class="tile disabled" id="tile-8">8</div>
+          <div class="tile disabled" id="tile-9">9</div>
+        </div>
+        <div class="row single"><div class="tile disabled" id="tile-7">7</div></div>
+        <div class="row single"><div class="tile disabled" id="tile-6">6</div></div>
+        <div class="row double">
+          <div class="tile disabled" id="tile-4">4</div>
+          <div class="tile disabled" id="tile-5">5</div>
+        </div>
+        <div class="row single"><div class="tile disabled" id="tile-3">3</div></div>
+        <div class="row single"><div class="tile disabled" id="tile-2">2</div></div>
+        <div class="row single"><div class="tile active" id="tile-1">1</div></div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DERECHA: VISOR E INSTRUCCIONES -->
+    <section class="display-section">
+      <div class="card-doodle">
+        <h2>📌 Movimiento Actual</h2>
+        
+        <div class="avatar-container">
+          <img id="move-image" src="" alt="Instrucción de Movimiento">
+        </div>
+
+        <div class="instruction-box">
+          <h3 id="move-title">Toca "Iniciar Movimiento"</h3>
+          <p id="move-desc">Sigue la postura en espejo y mantén el equilibrio.</p>
+        </div>
+        
+        <!-- BOTONES DE ACCIÓN UNIFICADOS -->
+        <div class="action-buttons-box">
+          <button id="btn-toggle-play" class="btn-start" onclick="togglePlayPause()">▶️ Iniciar</button>
+          <button class="btn-eval" onclick="completarCasillaActual()">✅ ¡Logrado!</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

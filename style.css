@@ -1,0 +1,287 @@
+:root {
+  --bg-color: #FDFBF7;
+  --text-color: #2B2D42;
+  --accent-yellow: #FFE66D;
+  --accent-green: #4ECDC4;
+  --accent-orange: #FF6B6B;
+  --border-doodle: 3px solid #2B2D42;
+  --font-title: 'Fredoka One', cursive;
+  --font-body: 'Quicksand', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 15px;
+  background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.game-header h1 {
+  font-family: var(--font-title);
+  font-size: 2rem;
+  color: #3D405B;
+  margin-bottom: 10px;
+}
+
+.controls-bar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+
+/* TARJETA INDEPENDIENTE DEL ANIMAL A LA IZQUIERDA */
+.animal-card {
+  width: 110px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: var(--border-doodle);
+  border-radius: 15px;
+  box-shadow: 3px 3px 0px #2B2D42;
+  padding: 4px;
+  overflow: hidden;
+}
+
+.animal-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.level-selector-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: white;
+  padding: 8px 15px;
+  border: var(--border-doodle);
+  border-radius: 15px;
+  box-shadow: 3px 3px 0px #2B2D42;
+}
+
+select {
+  padding: 6px 10px;
+  font-family: var(--font-body);
+  font-weight: bold;
+  border: 2px solid #2B2D42;
+  border-radius: 10px;
+  background-color: #FFF;
+  cursor: pointer;
+}
+
+.timer-box {
+  background: var(--accent-yellow);
+  padding: 8px 15px;
+  border: var(--border-doodle);
+  border-radius: 15px;
+  box-shadow: 3px 3px 0px #2B2D42;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* SECCIÓN GOLOSA LIMPIA */
+.board-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-doodle);
+  border-radius: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 6px 6px 0px #2B2D42;
+}
+
+.plane-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  gap: 8px;
+}
+
+.tile {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  border: var(--border-doodle);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background-color: #FFF;
+  user-select: none;
+}
+
+.tile.active {
+  background-color: var(--accent-yellow);
+  transform: scale(1.08);
+  box-shadow: 0px 4px 0px #2B2D42;
+}
+
+.tile.completed {
+  background-color: var(--accent-green);
+  color: white;
+}
+
+.tile.disabled {
+  opacity: 0.4;
+  background-color: #E0E0E0;
+}
+
+/* TARJETA DERECHA */
+.card-doodle {
+  background: white;
+  border: var(--border-doodle);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 6px 6px 0px #2B2D42;
+}
+
+.avatar-container {
+  width: 250px;
+  height: 200px;
+  border: 2px dashed #2B2D42;
+  border-radius: 15px;
+  margin: 15px 0;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.avatar-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.instruction-box {
+  background-color: #E8F1F2;
+  padding: 12px;
+  border-radius: 12px;
+  width: 100%;
+  margin-bottom: 15px;
+  border: 2px solid #2B2D42;
+}
+
+.action-buttons-box {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-start, .btn-primary, .btn-eval {
+  font-family: var(--font-title);
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: var(--border-doodle);
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0px 4px 0px #2B2D42;
+  transition: transform 0.1s;
+  color: white;
+}
+
+.btn-start { background-color: var(--accent-orange); }
+.btn-eval { background-color: var(--accent-green); }
+
+.btn-start:active, .btn-eval:active {
+  transform: translateY(3px);
+  box-shadow: 0px 1px 0px #2B2D42;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#countdown-number {
+  font-family: var(--font-title);
+  font-size: 10rem;
+  color: var(--accent-yellow);
+  text-shadow: 5px 5px 0px var(--accent-orange);
+}
+
+.pop-animation {
+  animation: pop 0.8s ease-in-out infinite;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.victory-card {
+  background: white;
+  padding: 40px;
+  border: var(--border-doodle);
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 10px 10px 0px var(--accent-yellow);
+}
+
+.victory-card h1 {
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  color: var(--accent-orange);
+  margin-bottom: 15px;
+}
